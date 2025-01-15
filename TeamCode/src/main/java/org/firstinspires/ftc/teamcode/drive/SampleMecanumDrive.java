@@ -119,13 +119,14 @@ public class SampleMecanumDrive extends MecanumDrive {
         }
 
         setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
         if (RUN_USING_ENCODER && MOTOR_VELO_PID != null) {
             setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, MOTOR_VELO_PID);
         }
 
-        rightFront.setDirection(DcMotorSimple.Direction.REVERSE); // add if needed
-        rightRear.setDirection(DcMotorSimple.Direction.REVERSE); // add if needed
+        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftRear.setDirection(DcMotorSimple.Direction.REVERSE);
+        //rightFront.setDirection(DcMotorSimple.Direction.REVERSE); // add if needed
+        //rightRear.setDirection(DcMotorSimple.Direction.REVERSE); // add if needed
 
         // TODO: reverse any motors using DcMotor.setDirection()
 
@@ -133,7 +134,6 @@ public class SampleMecanumDrive extends MecanumDrive {
         List<Integer> lastTrackingEncVels = new ArrayList<>();
 
         // TODO: if desired, use setLocalizer() to change the localization method
-        // setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap, lastTrackingEncPositions, lastTrackingEncVels));
 
         setLocalizer(new TwoWheelTrackingLocalizer(hardwareMap, this));
 
